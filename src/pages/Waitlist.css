@@ -1,21 +1,47 @@
 .waitlist-hero {
-  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-  color: white;
-  padding: 5rem 0 4rem;
+  position: relative;
+  padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 8vw, 5rem);
   text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #3881f7 0%, #f5576c 100%);
+  color: white;
+}
+
+.waitlist-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(240, 147, 251, 0.4), transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(245, 87, 108, 0.3), transparent 50%);
+  animation: gradientShift 15s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, 10px) scale(1.05); }
 }
 
 .waitlist-hero h1 {
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-6);
   color: white;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-description {
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  line-height: 1.6;
   max-width: 700px;
   margin: 0 auto;
-  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.95);
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+  opacity: 1;
 }
 
 /* Form Section */

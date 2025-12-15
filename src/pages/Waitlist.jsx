@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { fadeInUp, scaleIn, staggerContainer, staggerItem, viewportOptions, buttonHover, buttonTap } from '../utils/animations'
 import './Waitlist.css'
 
 function Waitlist() {
@@ -43,21 +45,44 @@ function Waitlist() {
       
       {/* Hero */}
       <section className="waitlist-hero">
+        <div className="waitlist-hero-bg"></div>
         <div className="container">
-          <h1>Join the Waitlist</h1>
-          <p className="hero-description">
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            Join the Waitlist
+          </motion.h1>
+          <motion.p 
+            className="hero-description"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Be the first to experience stress-free group travel planning. Sign up for early access to Solmate.
-          </p>
+          </motion.p>
         </div>
       </section>
       
       {/* Form Section */}
       <section className="section form-section">
         <div className="container">
-          <div className="form-wrapper">
+          <motion.div 
+            className="form-wrapper"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOptions}
+            transition={{ duration: 0.6 }}
+          >
             
             {!submitted ? (
-              <form onSubmit={handleSubmit} className="waitlist-form">
+              <motion.form 
+                onSubmit={handleSubmit} 
+                className="waitlist-form"
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+              >
                 <div className="form-group">
                   <label htmlFor="name">Your Name *</label>
                   <input
@@ -113,43 +138,66 @@ function Waitlist() {
                   />
                 </div>
                 
-                <button type="submit" className="btn-submit">
+                <motion.button 
+                  type="submit" 
+                  className="btn-submit"
+                  whileHover={buttonHover}
+                  whileTap={buttonTap}
+                >
                   Join the Waitlist
-                </button>
+                </motion.button>
                 
                 <p className="form-note">
                   We'll notify you when Solmate launches. No spam, we promise.
                 </p>
-              </form>
+              </motion.form>
             ) : (
-              <div className="success-message">
-                <div className="success-icon">✓</div>
+              <motion.div 
+                className="success-message"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, ease: "backOut" }}
+              >
+                <motion.div 
+                  className="success-icon"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                >
+                  ✓
+                </motion.div>
                 <h2>You're on the list!</h2>
                 <p>
                   Thanks for joining the Solmate waitlist. We'll send you an email when we launch.
                 </p>
-              </div>
+              </motion.div>
             )}
             
-          </div>
+          </motion.div>
           
           {/* Info Cards */}
-          <div className="info-cards">
-            <div className="info-card">
+          <motion.div 
+            className="info-cards"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+          >
+            <motion.div className="info-card" variants={staggerItem}>
               <h3>🚀 Early Access</h3>
               <p>Be among the first to try Solmate and help shape its future with your feedback.</p>
-            </div>
+            </motion.div>
             
-            <div className="info-card">
+            <motion.div className="info-card" variants={staggerItem}>
               <h3>💌 Launch Updates</h3>
               <p>Get exclusive updates about features, launch date, and special offers for early users.</p>
-            </div>
+            </motion.div>
             
-            <div className="info-card">
+            <motion.div className="info-card" variants={staggerItem}>
               <h3>🎁 Special Perks</h3>
               <p>Waitlist members get priority access and bonus features when we launch.</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
       

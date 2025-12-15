@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
+import ScrollProgress from './components/ScrollProgress'
 import Home from './pages/Home'
 import Features from './pages/Features'
 import HowItWorks from './pages/HowItWorks'
@@ -8,15 +9,18 @@ import Waitlist from './pages/Waitlist'
 
 function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/features" element={<Features />} />
-        <Route path="/how-it-works" element={<HowItWorks />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/waitlist" element={<Waitlist />} />
-      </Routes>
-    </Layout>
+    <>
+      <ScrollProgress />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/waitlist" element={<Waitlist />} />
+        </Routes>
+      </Layout>
+    </>
   )
 }
 
