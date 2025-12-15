@@ -1,0 +1,181 @@
+/* ===== AUTH VERIFY PAGE ===== */
+.verify-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Animated Background */
+.verify-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.verify-bg .gradient-mesh {
+  animation: gradientFloat 20s ease-in-out infinite;
+}
+
+/* Container */
+.verify-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-6);
+}
+
+/* Verify Card */
+.verify-card {
+  background: white;
+  border-radius: var(--radius-3xl);
+  padding: clamp(3rem, 8vw, 5rem) clamp(2rem, 5vw, 3rem);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 100px rgba(102, 126, 234, 0.2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.verify-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+  background-size: 200% 100%;
+  animation: shimmerTop 3s ease-in-out infinite;
+}
+
+/* Spinner */
+.verify-spinner {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-8);
+}
+
+.verify-spinner svg {
+  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3));
+}
+
+/* Success Checkmark */
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-8);
+}
+
+.verify-card.success::before {
+  background: linear-gradient(90deg, #10b981 0%, #059669 50%, #10b981 100%);
+  background-size: 200% 100%;
+  animation: shimmerTop 3s ease-in-out infinite;
+}
+
+/* Error Icon */
+.error-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-8);
+}
+
+.verify-card.error::before {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 50%, #ef4444 100%);
+  background-size: 200% 100%;
+  animation: shimmerTop 3s ease-in-out infinite;
+}
+
+/* Typography */
+.verify-card h2 {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  margin-bottom: var(--space-4);
+  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.verify-card p {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Retry Button */
+.btn-retry {
+  margin-top: var(--space-8);
+  padding: var(--space-4) var(--space-8);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: var(--radius-xl);
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-retry::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-retry:hover::before {
+  opacity: 1;
+}
+
+.btn-retry:hover {
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-retry span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .verify-container {
+    padding: var(--space-4);
+  }
+
+  .verify-card {
+    padding: clamp(2.5rem, 6vw, 3rem) clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .verify-spinner,
+  .success-checkmark,
+  .error-icon {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Pulse animation for waiting state */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.verify-card:not(.success):not(.error) {
+  animation: pulse 2s ease-in-out infinite;
+}

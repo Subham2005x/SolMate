@@ -55,16 +55,17 @@ function Header() {
                   About
                 </Link>
               </motion.div>
+           
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Link 
-                  to="/waitlist" 
+                  to="/auth" 
                   className="btn-primary"
-                  aria-label="Join our waitlist"
+                  aria-label="Get started"
                 >
-                  Join Waitlist
+                  Get Started
                 </Link>
               </motion.div>
             </div>

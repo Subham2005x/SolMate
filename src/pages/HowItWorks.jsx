@@ -173,8 +173,8 @@ function HowItWorks() {
               whileHover={buttonHover}
               whileTap={buttonTap}
             >
-              <Link to="/waitlist" className="btn-cta">
-                <span>Join the Waitlist</span>
+              <Link to="/auth" className="btn-cta">
+                <span>Get Started</span>
                 <motion.span
                   className="btn-arrow"
                   animate={{ x: [0, 4, 0] }}

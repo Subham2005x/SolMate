@@ -24,8 +24,13 @@ function Home() {
       />
       
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero noise-overlay">
         <div className="hero-gradient-bg" />
+        <div className="floating-shapes">
+          <div className="floating-blob floating-blob-1"></div>
+          <div className="floating-blob floating-blob-2"></div>
+          <div className="floating-blob floating-blob-3"></div>
+        </div>
         <div className="container">
           <div className="hero-content">
             <motion.h1 
@@ -54,8 +59,8 @@ function Home() {
                 whileHover={buttonHover}
                 whileTap={buttonTap}
               >
-                <Link to="/waitlist" className="btn-cta">
-                  <span>Join the Waitlist</span>
+                <Link to="/auth" className="btn-cta">
+                  <span>Get Started</span>
                   <motion.span
                     className="btn-arrow"
                     animate={{ x: [0, 4, 0] }}
@@ -211,6 +216,7 @@ function Home() {
             viewport={viewportOptions}
             transition={{ duration: 0.6 }}
           >
+            <div className="gradient-mesh"></div>
             <h2>Ready to Plan Your Next Adventure?</h2>
             <p>
               Join the waitlist and be the first to experience stress-free group travel.
@@ -219,8 +225,8 @@ function Home() {
               whileHover={buttonHover}
               whileTap={buttonTap}
             >
-              <Link to="/waitlist" className="btn-cta">
-                <span>Join the Waitlist</span>
+              <Link to="/auth" className="btn-cta">
+                <span>Get Started</span>
                 <motion.span
                   className="btn-arrow"
                   animate={{ x: [0, 4, 0] }}

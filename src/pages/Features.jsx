@@ -53,8 +53,12 @@ function Features() {
       />
       
       {/* Hero */}
-      <section className="features-hero">
+      <section className="features-hero noise-overlay">
         <div className="features-hero-bg" />
+        <div className="floating-shapes">
+          <div className="floating-blob floating-blob-1"></div>
+          <div className="floating-blob floating-blob-2"></div>
+        </div>
         <div className="container">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
