@@ -98,8 +98,68 @@
   --warning: #e0ca8c;
   --error: #c9431d;
   --info: #9dcdb5;
+}
+
+/* ===== DARK MODE THEME ===== */
+.dark-mode {
+  /* PRIMARY - Forest Green (adjusted for dark) */
+  --primary: #57ab81;
+  --primary-dark: #75ba97;
+  --primary-light: #9dcdb5;
   
-  /* Legacy support - mapped to new theme */
+  /* SECONDARY - Sand (adjusted for dark) */
+  --secondary: #d9c175;
+  --secondary-dark: #e0ca8c;
+  --secondary-light: #c4ac62;
+  
+  /* ACCENT - Burnt Orange (adjusted for dark) */
+  --accent: #f9a796;
+  --accent-dark: #fbc4b7;
+  --accent-light: #E76F51;
+  
+  /* BACKGROUNDS - Dark theme */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #242424;
+  --bg-tertiary: #2a2a2a;
+  --bg-card: #242424;
+  --bg-sand: #2a2622;
+  
+  /* TEXT - Light on dark */
+  --text-primary: #e8e8e8;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #808080;
+  --text-muted: #6b6b6b;
+  --text-inverse: #1a1a1a;
+  
+  /* BORDERS - Subtle on dark */
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-strong: rgba(255, 255, 255, 0.24);
+  
+  /* Gradients adjusted for dark mode */
+  --gradient-hero: linear-gradient(135deg, #0F3D2E 0%, #57ab81 100%);
+  --gradient-feature: linear-gradient(135deg, #57ab81 0%, #75ba97 100%);
+  --gradient-cta: linear-gradient(135deg, #E76F51 0%, #f9a796 100%);
+  --gradient-card: linear-gradient(135deg, #2a2622 0%, #242424 100%);
+  --gradient-subtle: linear-gradient(135deg, #242424 0%, #2a2a2a 100%);
+  
+  /* Shadows for dark mode */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-2xl: 0 24px 64px rgba(0, 0, 0, 0.8);
+  
+  /* Semantic colors adjusted */
+  --success: #75ba97;
+  --warning: #e0ca8c;
+  --error: #f9a796;
+  --info: #9dcdb5;
+}
+  
+/* Legacy support - mapped to new theme */
+:root {
   --text-dark: var(--text-primary);
   --text-light: var(--text-tertiary);
   --bg-light: var(--bg-secondary);
@@ -182,6 +242,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Enhanced typography system */
@@ -191,6 +252,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   letter-spacing: -0.02em; /* Tighter tracking for large text */
   margin-bottom: var(--space-4);
+  transition: color 0.3s ease;
 }
 
 h1 {

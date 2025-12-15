@@ -85,10 +85,11 @@
 .btn-primary {
   background: var(--primary);
   color: white !important;
-  padding: var(--space-3) var(--space-6) ;
+  padding: var(--space-4) var(--space-6) ;
   border-radius: var(--radius-md);
   transition: all var(--transition-base);
   font-weight: 600;
+  
   box-shadow: var(--shadow-sm);
 }
 

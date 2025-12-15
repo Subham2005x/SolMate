@@ -8,6 +8,7 @@ import About from './pages/About'
 import Waitlist from './pages/Waitlist'
 import Auth from './pages/Auth'
 import AuthVerify from './pages/AuthVerify'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         {/* Auth routes (no layout) */}
         <Route path="/auth" element={<Auth />} />
         <Route path="/auth/verify" element={<AuthVerify />} />
+        
+        {/* Dashboard route (no layout - full app experience) */}
+        <Route path="/dashboard" element={<Dashboard />} />
         
         {/* Main routes (with layout) */}
         <Route element={<Layout />}>
