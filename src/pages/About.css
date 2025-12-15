@@ -3,7 +3,7 @@
   padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 8vw, 5rem);
   text-align: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #a7c308 0%, #eff79a 100%);
+  background: linear-gradient(135deg, #E6D3A3 0%, #FAF7F2 100%);
   color: var(--text-primary);
 }
 
@@ -11,8 +11,8 @@
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 30% 50%, rgba(253, 203, 110, 0.4), transparent 50%),
-    radial-gradient(circle at 70% 50%, rgba(255, 234, 167, 0.3), transparent 50%);
+    radial-gradient(circle at 30% 50%, rgba(15, 61, 46, 0.06), transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(231, 111, 81, 0.05), transparent 50%);
   animation: gradientShift 15s ease-in-out infinite;
 }
 
@@ -167,7 +167,7 @@
 }
 
 .cta-box {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #E76F51 0%, #f9a796 100%);
   color: white;
   padding: 4rem 2rem;
   border-radius: 1rem;

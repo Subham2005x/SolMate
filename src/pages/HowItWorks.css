@@ -4,7 +4,7 @@
   padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 8vw, 5rem);
   text-align: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  background: linear-gradient(135deg, #FAF7F2 0%, #E6D3A3 100%);
   color: var(--text-primary);
 }
 
@@ -12,8 +12,8 @@
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 25% 40%, rgba(168, 237, 234, 0.4), transparent 50%),
-    radial-gradient(circle at 75% 60%, rgba(254, 214, 227, 0.3), transparent 50%);
+    radial-gradient(circle at 25% 40%, rgba(15, 61, 46, 0.05), transparent 50%),
+    radial-gradient(circle at 75% 60%, rgba(231, 111, 81, 0.05), transparent 50%);
   animation: gradientShift 15s ease-in-out infinite;
 }
 
@@ -82,7 +82,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+  background: linear-gradient(135deg, #0F3D2E 0%, #57ab81 100%);
   color: white;
   padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-full);
@@ -90,7 +90,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 12px rgba(15, 61, 46, 0.25);
   transition: transform 0.2s;
 }
 
@@ -177,7 +177,7 @@
   bottom: -var(--space-16);
   width: 3px;
   height: var(--space-16);
-  background: linear-gradient(180deg, var(--accent-purple), var(--accent-pink));
+  background: linear-gradient(180deg, #0F3D2E, #E76F51);
   transform: translateX(-50%);
   transform-origin: top;
 }
@@ -188,14 +188,14 @@
 }
 
 .how-cta .cta-box {
-  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  background: linear-gradient(135deg, #E76F51 0%, #f9a796 100%);
   padding: clamp(3.5rem, 10vw, 6rem) var(--space-10);
   border-radius: var(--radius-3xl);
   text-align: center;
-  color: var(--text-primary);
+  color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(168, 237, 234, 0.4);
+  box-shadow: 0 20px 60px rgba(231, 111, 81, 0.3);
 }
 
 .how-cta .cta-box::before {
@@ -209,7 +209,7 @@
 }
 
 .how-cta .cta-box h2 {
-  color: var(--text-primary);
+  color: white;
   margin-bottom: var(--space-5);
   font-size: clamp(2rem, 5vw, 3rem);
   position: relative;
@@ -221,7 +221,7 @@
 .how-cta .cta-box p {
   font-size: clamp(1.0625rem, 2vw, 1.375rem);
   margin-bottom: var(--space-10);
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.96);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -234,14 +234,14 @@
   position: relative;
   z-index: 1;
   background: white;
-  color: var(--accent-purple);
+  color: #E76F51;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   gap: var(--space-2);
   white-space: nowrap;
 }
 
 .how-cta .cta-box .btn-cta:hover {
-  background: var(--accent-purple);
+  background: #0F3D2E;
   color: white;
 }
 

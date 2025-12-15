@@ -6,7 +6,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0F3D2E 0%, #57ab81 100%);
 }
 
 /* Animated Background */
@@ -36,7 +36,7 @@
   padding: clamp(3rem, 8vw, 5rem) clamp(2rem, 5vw, 3rem);
   box-shadow: 
     0 20px 60px rgba(0, 0, 0, 0.3),
-    0 0 100px rgba(102, 126, 234, 0.2);
+    0 0 100px rgba(15, 61, 46, 0.2);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -49,7 +49,7 @@
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+  background: linear-gradient(90deg, #0F3D2E 0%, #57ab81 50%, #0F3D2E 100%);
   background-size: 200% 100%;
   animation: shimmerTop 3s ease-in-out infinite;
 }
@@ -62,7 +62,7 @@
 }
 
 .verify-spinner svg {
-  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3));
+  filter: drop-shadow(0 4px 12px rgba(15, 61, 46, 0.25));
 }
 
 /* Success Checkmark */
@@ -111,14 +111,14 @@
 .btn-retry {
   margin-top: var(--space-8);
   padding: var(--space-4) var(--space-8);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #E76F51 0%, #f9a796 100%);
   border: none;
   border-radius: var(--radius-xl);
   font-weight: 700;
   font-size: 1rem;
   color: white;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
@@ -128,7 +128,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: linear-gradient(135deg, #f9a796 0%, #E76F51 100%);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -138,7 +138,7 @@
 }
 
 .btn-retry:hover {
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(231, 111, 81, 0.4);
 }
 
 .btn-retry span {
