@@ -18,6 +18,8 @@ import BudgetTracking from './pages/BudgetTracking'
 import TravelBuddy from './pages/TravelBuddy'
 // Trip Workspace
 import TripWorkspace from './pages/workspace/TripWorkspace'
+// User Profile
+import UserProfile from './pages/UserProfile'
 
 function App() {
   return (
@@ -30,6 +32,10 @@ function App() {
         
         {/* Dashboard route (no layout - full app experience) */}
         <Route path="/dashboard" element={<Dashboard />} />
+        
+        {/* User Profile routes (no layout - full profile experience) */}
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile/:userId" element={<UserProfile />} />
         
         {/* Trip Workspace (no layout - dedicated workspace experience) */}
         <Route path="/workspace/:tripId/*" element={<TripWorkspace />} />

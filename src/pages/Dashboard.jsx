@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import QuickTranslator from '../components/QuickTranslator/QuickTranslator'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -125,7 +126,12 @@ function Dashboard() {
           <button className="icon-button" aria-label="Notifications">
             <span>🔔</span>
           </button>
-          <div className="user-avatar">
+          <div 
+            className="user-avatar"
+            onClick={() => navigate('/profile')}
+            style={{ cursor: 'pointer' }}
+            title="View Profile"
+          >
             <span>{userName.charAt(0)}</span>
           </div>
         </div>
@@ -158,7 +164,7 @@ function Dashboard() {
             
             <button 
               className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`}
-              onClick={() => setActiveTab('profile')}
+              onClick={() => navigate('/profile')}
             >
               <span className="nav-icon">👤</span>
               <span className="nav-label">Profile</span>
@@ -406,6 +412,9 @@ function Dashboard() {
           </div>
         </aside>
       </div>
+
+      {/* Quick Translator Widget */}
+      <QuickTranslator />
     </div>
   )
 }

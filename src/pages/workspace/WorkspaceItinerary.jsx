@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import MapComponent from '../../components/Map/MapComponent'
 import './WorkspaceItinerary.css'
 
 function WorkspaceItinerary({ tripData }) {
@@ -73,6 +74,25 @@ function WorkspaceItinerary({ tripData }) {
 
   const selectedDayData = itineraryDays.find(day => day.id === selectedDay)
 
+  // Get map center and markers for route visualization
+  const routeLocations = {
+    'Haneda Airport': [35.5494, 139.7798],
+    'Shibuya': [35.6595, 139.7004],
+    'Asakusa': [35.7148, 139.7967],
+    'Tsukiji': [35.6654, 139.7707],
+    'Sumida': [35.7101, 139.8107]
+  }
+
+  const mapMarkers = itineraryDays.flatMap(day => 
+    day.activities.map(activity => ({
+      lat: routeLocations[activity.location]?.[0] || 35.6762,
+      lng: routeLocations[activity.location]?.[1] || 139.6503,
+      popup: `<strong>${activity.title}</strong><br/>${activity.time} - ${activity.location}`
+    }))
+  )
+
+  const mapCenter = [35.6762, 139.6503] // Tokyo center
+
   return (
     <div className="workspace-itinerary">
       <div className="itinerary-header">
@@ -80,30 +100,102 @@ function WorkspaceItinerary({ tripData }) {
           <h1>Trip Itinerary</h1>
           <p className="header-subtitle">Plan your perfect journey day by day</p>
         </div>
-        <button className="add-day-button" onClick={handleAddDay}>
-          <span>+ Add Day</span>
-        </button>
+        <div className="header-actions">
+          <button className="header-action-btn secondary" onClick={() => window.open('https://maps.google.com', '_blank')}>
+            📍 View Map
+          </button>
+          <button className="add-day-button" onClick={handleAddDay}>
+            <span>+ Add Day</span>
+          </button>
+        </div>
       </div>
 
-      <div className="itinerary-content">
-        {/* Day Tabs */}
-        <div className="day-tabs">
-          <div className="day-tabs-scroll">
-            {itineraryDays.map((day, index) => (
-              <button
-                key={day.id}
-                className={`day-tab ${selectedDay === day.id ? 'active' : ''}`}
-                onClick={() => setSelectedDay(day.id)}
-              >
-                <div className="day-tab-number">Day {index + 1}</div>
-                <div className="day-tab-date">{formatDate(day.date)}</div>
-                <div className="day-tab-count">{day.activities.length} activities</div>
-              </button>
-            ))}
-          </div>
+      {/* Compact Route Overview */}
+      <motion.div
+        className="itinerary-route-overview"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <div className="route-overview-header">
+          <h2>Journey Overview</h2>
+          <span className="route-days-badge">{itineraryDays.length} days • Multi-stop</span>
         </div>
 
-        {/* Timeline View */}
+        <div className="route-map-section">
+          <MapComponent 
+            center={mapCenter}
+            zoom={12}
+            markers={mapMarkers}
+            className="itinerary-map-large"
+          />
+        </div>
+
+        <div className="route-overview-stats">
+          <div className="stat-compact">
+            <span className="stat-icon-compact">📅</span>
+            <div className="stat-text-compact">
+              <span className="stat-value-compact">{itineraryDays.length}</span>
+              <span className="stat-label-compact">Days</span>
+            </div>
+          </div>
+          <div className="stat-compact">
+            <span className="stat-icon-compact">📍</span>
+            <div className="stat-text-compact">
+              <span className="stat-value-compact">{new Set(itineraryDays.flatMap(d => d.activities.map(a => a.location))).size}</span>
+              <span className="stat-label-compact">Locations</span>
+            </div>
+          </div>
+          <div className="stat-compact">
+            <span className="stat-icon-compact">🎯</span>
+            <div className="stat-text-compact">
+              <span className="stat-value-compact">{itineraryDays.reduce((sum, day) => sum + day.activities.length, 0)}</span>
+              <span className="stat-label-compact">Activities</span>
+            </div>
+          </div>
+          <div className="stat-compact">
+            <span className="stat-icon-compact">⏱️</span>
+            <div className="stat-text-compact">
+              <span className="stat-value-compact">
+                {itineraryDays.reduce((total, day) => 
+                  total + day.activities.reduce((sum, act) => {
+                    const hours = parseFloat(act.duration);
+                    return sum + (isNaN(hours) ? 0 : hours);
+                  }, 0), 0).toFixed(0)}
+              </span>
+              <span className="stat-label-compact">Hours</span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Day Selector Tabs - Horizontal */}
+      <div className="day-selector-tabs">
+        <div className="day-tabs-scroll">
+          {itineraryDays.map((day, index) => (
+            <button
+              key={day.id}
+              className={`day-tab-compact ${selectedDay === day.id ? 'active' : ''}`}
+              onClick={() => setSelectedDay(day.id)}
+            >
+              <div className="day-tab-marker" style={{
+                background: index === 0 ? '#0F3D2E' : index === itineraryDays.length - 1 ? '#E6D3A3' : '#57ab81'
+              }}></div>
+              <div className="day-tab-info">
+                <span className="day-tab-number">Day {index + 1}</span>
+                <span className="day-tab-date">{formatDate(day.date)}</span>
+                <span className="day-tab-count">{day.activities.length} activities</span>
+              </div>
+            </button>
+          ))}
+          <button className="add-day-tab-btn" onClick={handleAddDay}>
+            + Add Day
+          </button>
+        </div>
+      </div>
+
+      <div className="itinerary-main-grid">
+        {/* Timeline View - Full Width */}
         {selectedDayData && (
           <motion.div
             key={selectedDay}
