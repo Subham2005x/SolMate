@@ -1,9 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import './WorkspaceCommunity.css'
 
 function WorkspaceCommunity({ tripData, currentUser }) {
   const [activeTab, setActiveTab] = useState('discover')
+  const [darkMode, setDarkMode] = useState(() => {
+    return document.documentElement.classList.contains('dark-mode')
+  })
+  
+  // Listen for dark mode changes
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setDarkMode(document.documentElement.classList.contains('dark-mode'))
+    })
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    })
+    return () => observer.disconnect()
+  }, [])
   
   // Mock data for travelers
   const [travelers] = useState([
@@ -200,7 +215,7 @@ function WorkspaceCommunity({ tripData, currentUser }) {
   }
 
   return (
-    <div className="workspace-community">
+    <div className={`workspace-community ${darkMode ? 'dark' : ''}`}>
       <div className="community-header">
         <div className="header-left">
           <h1>Travel Community</h1>
