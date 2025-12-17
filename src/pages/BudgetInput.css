@@ -1,0 +1,208 @@
+/* ===== BUDGET INPUT SCREEN ===== */
+
+/* Budget Display */
+.budget-slider-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+}
+
+.budget-display {
+  text-align: center;
+}
+
+.budget-amount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.budget-label {
+  font-size: 0.9375rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+/* Slider */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.budget-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.budget-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(15, 61, 46, 0.3);
+  transition: all 0.2s ease;
+}
+
+.budget-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(15, 61, 46, 0.4);
+}
+
+.budget-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(15, 61, 46, 0.3);
+  transition: all 0.2s ease;
+}
+
+.budget-slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(15, 61, 46, 0.4);
+}
+
+.slider-markers {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--space-1);
+}
+
+.slider-marker {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+/* Budget Range Cards */
+.budget-ranges {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.budget-range-card {
+  padding: var(--space-4);
+  background: var(--bg-card);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-align: center;
+}
+
+.budget-range-card:hover {
+  border-color: var(--border-medium);
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.budget-range-card.active {
+  border-color: var(--primary);
+  background: rgba(15, 61, 46, 0.05);
+  color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.1);
+}
+
+.dark-mode .budget-range-card.active {
+  background: rgba(87, 171, 129, 0.15);
+  box-shadow: 0 0 0 3px rgba(87, 171, 129, 0.2);
+}
+
+/* Custom Amount Input */
+.custom-amount-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: var(--space-4);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.custom-input {
+  padding-left: calc(var(--space-4) + 1.5rem);
+}
+
+/* Info Card */
+.budget-info-card {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: rgba(87, 171, 129, 0.05);
+  border: 1px solid rgba(87, 171, 129, 0.15);
+  border-radius: var(--radius-lg);
+}
+
+.dark-mode .budget-info-card {
+  background: rgba(87, 171, 129, 0.1);
+  border-color: rgba(87, 171, 129, 0.2);
+}
+
+.info-card-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.info-card-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.info-card-content p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .budget-amount {
+    font-size: 2.5rem;
+  }
+
+  .budget-ranges {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-markers {
+    padding: 0;
+  }
+
+  .slider-marker {
+    font-size: 0.6875rem;
+  }
+}

@@ -1,0 +1,108 @@
+/* ===== SUGGESTIONS SCREEN ===== */
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.suggestion-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  transition: all 0.2s ease;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.suggestion-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.suggestion-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.suggestion-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.suggestion-text {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Color Variants */
+.suggestion-card.color-blue {
+  border-left: 4px solid #3b82f6;
+}
+
+.suggestion-card.color-green {
+  border-left: 4px solid #10b981;
+}
+
+.suggestion-card.color-orange {
+  border-left: 4px solid var(--accent);
+}
+
+.suggestion-card.color-purple {
+  border-left: 4px solid #8b5cf6;
+}
+
+/* Info Banner */
+.suggestions-banner {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: linear-gradient(135deg, rgba(15, 61, 46, 0.05) 0%, rgba(87, 171, 129, 0.05) 100%);
+  border: 1px solid rgba(15, 61, 46, 0.1);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-2);
+}
+
+.dark-mode .suggestions-banner {
+  background: linear-gradient(135deg, rgba(87, 171, 129, 0.1) 0%, rgba(87, 171, 129, 0.05) 100%);
+  border-color: rgba(87, 171, 129, 0.2);
+}
+
+.banner-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.banner-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.banner-content p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .suggestions-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,377 @@
+/* ===== TRIP FLOW LAYOUT ===== */
+.trip-flow-app {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+
+/* ===== FLOW APP BAR ===== */
+.flow-app-bar {
+  height: 64px;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(15, 61, 46, 0.06);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.dark-mode .flow-app-bar {
+  background: rgba(36, 36, 36, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.flow-app-bar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.flow-back-button {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  border: 1px solid rgba(15, 61, 46, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.flow-back-button:hover {
+  background: rgba(15, 61, 46, 0.08);
+  border-color: rgba(15, 61, 46, 0.2);
+  transform: translateX(-2px);
+}
+
+.dark-mode .flow-back-button {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .flow-back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.flow-app-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
+}
+
+.flow-logo-icon {
+  font-size: 1.25rem;
+}
+
+/* ===== PROGRESS INDICATOR ===== */
+.flow-app-bar-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flow-progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.progress-step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.progress-step.upcoming .progress-step-circle {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-light);
+  color: var(--text-tertiary);
+}
+
+.progress-step.active .progress-step-circle {
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(15, 61, 46, 0.1);
+}
+
+.progress-step.completed .progress-step-circle {
+  background: var(--success);
+  border: 2px solid var(--success);
+  color: white;
+}
+
+.progress-step-line {
+  width: 40px;
+  height: 2px;
+  background: var(--border-light);
+  transition: background 0.3s ease;
+  margin: 0 -2px;
+}
+
+.progress-step.completed .progress-step-line {
+  background: var(--success);
+}
+
+/* ===== DARK MODE PROGRESS ===== */
+.dark-mode .progress-step.upcoming .progress-step-circle {
+  background: var(--bg-tertiary);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .progress-step.active .progress-step-circle {
+  box-shadow: 0 0 0 4px rgba(87, 171, 129, 0.2);
+}
+
+.dark-mode .progress-step-line {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== APP BAR RIGHT ===== */
+.flow-app-bar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.flow-icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.125rem;
+}
+
+.flow-icon-button:hover {
+  background: rgba(15, 61, 46, 0.08);
+  border-color: rgba(15, 61, 46, 0.1);
+  transform: translateY(-1px);
+}
+
+.dark-mode .flow-icon-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.flow-icon-button.flow-theme-toggle:hover {
+  transform: translateY(-1px) rotate(20deg);
+}
+
+/* ===== MAIN CONTENT ===== */
+.flow-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+  overflow-y: auto;
+}
+
+.flow-content-inner {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* ===== SHARED FLOW SCREEN STYLES ===== */
+.flow-screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.flow-screen-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.flow-screen-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.flow-screen-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.flow-screen-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ===== FORM ELEMENTS ===== */
+.flow-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.flow-form-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.flow-form-hint {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  margin-top: var(--space-1);
+}
+
+.flow-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.flow-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.1);
+}
+
+.dark-mode .flow-input:focus {
+  box-shadow: 0 0 0 3px rgba(87, 171, 129, 0.2);
+}
+
+.flow-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== BUTTONS ===== */
+.flow-button-group {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.flow-button {
+  flex: 1;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+}
+
+.flow-button-primary {
+  background: var(--accent);
+  color: white;
+  border: 1px solid var(--accent);
+}
+
+.flow-button-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+}
+
+.flow-button-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+}
+
+.flow-button-secondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-medium);
+}
+
+.flow-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ===== CARDS ===== */
+.flow-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: all 0.2s ease;
+}
+
+.flow-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .flow-app-bar {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 var(--space-4);
+  }
+
+  .flow-app-bar-center {
+    display: none;
+  }
+
+  .flow-content {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .flow-button-group {
+    flex-direction: column;
+  }
+
+  .flow-button {
+    width: 100%;
+  }
+}

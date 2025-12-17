@@ -1,12 +1,22 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import './Dashboard.css'
 
 function Dashboard() {
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('dashboard')
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode')
     return saved ? JSON.parse(saved) : false
+  })
+  const [currency, setCurrency] = useState(() => {
+    const saved = localStorage.getItem('preferredCurrency')
+    return saved || 'USD'
+  })
+  const [country, setCountry] = useState(() => {
+    const saved = localStorage.getItem('preferredCountry')
+    return saved || 'United States'
   })
   const userName = 'Subham' // Placeholder - would come from auth context
 
@@ -19,29 +29,50 @@ function Dashboard() {
     }
   }, [darkMode])
 
+  useEffect(() => {
+    localStorage.setItem('preferredCurrency', currency)
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('currencyChange', { detail: currency }))
+  }, [currency])
+
+  useEffect(() => {
+    localStorage.setItem('preferredCountry', country)
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('countryChange', { detail: country }))
+  }, [country])
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
   }
 
-  // Mock data
+  // Mock data - TODO: Replace with actual API call
   const upcomingTrips = [
     {
-      id: 1,
-      destination: 'Kyoto, Japan',
-      dates: 'Mar 15 - Mar 22, 2026',
+      id: 'tokyo-2024',
+      destination: 'Tokyo, Japan',
+      dates: 'Mar 15 - Mar 22, 2024',
       status: 'planning',
       participants: 4,
       progress: 35,
       imageUrl: '🏯'
     },
     {
-      id: 2,
+      id: 'barcelona-2024',
       destination: 'Barcelona, Spain',
-      dates: 'Jun 8 - Jun 15, 2026',
+      dates: 'Jun 8 - Jun 15, 2024',
       status: 'upcoming',
       participants: 3,
       progress: 80,
       imageUrl: '🏛️'
+    },
+    {
+      id: 'paris-2024',
+      destination: 'Paris, France',
+      dates: 'Sep 10 - Sep 17, 2024',
+      status: 'planning',
+      participants: 1,
+      progress: 15,
+      imageUrl: '🗼'
     }
   ]
 
@@ -135,6 +166,51 @@ function Dashboard() {
           </nav>
 
           <div className="sidebar-footer">
+            <div className="preferences-section">
+              <div className="preference-group">
+                <label className="preference-label">
+                  <span className="preference-icon">💰</span>
+                  <span>Currency</span>
+                </label>
+                <select 
+                  className="preference-select"
+                  value={currency}
+                  onChange={(e) => setCurrency(e.target.value)}
+                >
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="JPY">JPY (¥)</option>
+                  <option value="INR">INR (₹)</option>
+                  <option value="CAD">CAD ($)</option>
+                  <option value="AUD">AUD ($)</option>
+                </select>
+              </div>
+
+              <div className="preference-group">
+                <label className="preference-label">
+                  <span className="preference-icon">🌍</span>
+                  <span>Country</span>
+                </label>
+                <select 
+                  className="preference-select"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                >
+                  <option value="United States">United States</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="India">India</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Germany">Germany</option>
+                  <option value="France">France</option>
+                  <option value="Spain">Spain</option>
+                  <option value="Italy">Italy</option>
+                </select>
+              </div>
+            </div>
+
             <button className="nav-item secondary">
               <span className="nav-icon">⚙️</span>
               <span className="nav-label">Settings</span>
@@ -187,7 +263,10 @@ function Dashboard() {
               initial="hidden"
               animate="visible"
             >
-              <button className="create-trip-card">
+              <button 
+                className="create-trip-card"
+                onClick={() => navigate('/trip/setup')}
+              >
                 <div className="create-trip-content">
                   <div className="create-trip-icon">
                     <span className="plus-icon">+</span>
@@ -216,7 +295,13 @@ function Dashboard() {
 
               <div className="trips-grid">
                 {upcomingTrips.map((trip, index) => (
-                  <div key={trip.id} className="trip-card" data-status={trip.status}>
+                  <div 
+                    key={trip.id} 
+                    className="trip-card" 
+                    data-status={trip.status}
+                    onClick={() => navigate(`/workspace/${trip.id}`)}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <div className="trip-visual">
                       <div className="trip-emoji">{trip.imageUrl}</div>
                       <div className={`trip-status-badge ${trip.status}`}>

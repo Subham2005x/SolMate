@@ -83,6 +83,21 @@
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.2s;
+  background: #ffffff;
+  color: var(--text-dark);
+}
+
+.dark .form-group input,
+.dark .form-group select,
+.dark .form-group textarea {
+  background: rgba(36, 36, 36, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e8e8e8;
+}
+
+.dark .form-group select option {
+  background: #242424;
+  color: #e8e8e8;
 }
 
 .form-group input:focus,
@@ -90,6 +105,12 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
+}
+
+.dark .form-group input:focus,
+.dark .form-group select:focus,
+.dark .form-group textarea:focus {
+  border-color: #57ab81;
 }
 
 .form-group textarea {

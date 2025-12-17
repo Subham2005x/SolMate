@@ -1,0 +1,146 @@
+/* ===== ITINERARY BUILDER SCREEN ===== */
+
+.itinerary-days {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.day-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.day-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+}
+
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  background: rgba(15, 61, 46, 0.05);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.dark-mode .day-card-header {
+  background: rgba(87, 171, 129, 0.1);
+}
+
+.day-number {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+}
+
+.remove-day-button {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  transition: all 0.2s ease;
+}
+
+.remove-day-button:hover {
+  background: rgba(231, 111, 81, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.day-card-body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.day-title-input {
+  font-weight: 600;
+}
+
+.day-activities-input {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* Add Day Button */
+.add-day-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-4);
+  background: transparent;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.add-day-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(15, 61, 46, 0.03);
+}
+
+.dark-mode .add-day-button:hover {
+  background: rgba(87, 171, 129, 0.08);
+}
+
+.add-day-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Helper Card */
+.itinerary-helper-card {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: rgba(231, 111, 81, 0.05);
+  border: 1px solid rgba(231, 111, 81, 0.15);
+  border-radius: var(--radius-lg);
+}
+
+.dark-mode .itinerary-helper-card {
+  background: rgba(231, 111, 81, 0.1);
+  border-color: rgba(231, 111, 81, 0.2);
+}
+
+.helper-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.helper-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.helper-content p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}

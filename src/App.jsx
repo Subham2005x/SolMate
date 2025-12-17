@@ -9,6 +9,15 @@ import Waitlist from './pages/Waitlist'
 import Auth from './pages/Auth'
 import AuthVerify from './pages/AuthVerify'
 import Dashboard from './pages/Dashboard'
+// Trip Flow Screens
+import TripSetup from './pages/TripSetup'
+import BudgetInput from './pages/BudgetInput'
+import Suggestions from './pages/Suggestions'
+import ItineraryBuilder from './pages/ItineraryBuilder'
+import BudgetTracking from './pages/BudgetTracking'
+import TravelBuddy from './pages/TravelBuddy'
+// Trip Workspace
+import TripWorkspace from './pages/workspace/TripWorkspace'
 
 function App() {
   return (
@@ -21,6 +30,17 @@ function App() {
         
         {/* Dashboard route (no layout - full app experience) */}
         <Route path="/dashboard" element={<Dashboard />} />
+        
+        {/* Trip Workspace (no layout - dedicated workspace experience) */}
+        <Route path="/workspace/:tripId/*" element={<TripWorkspace />} />
+        
+        {/* Trip Planning Flow (no layout - full flow experience) */}
+        <Route path="/trip/setup" element={<TripSetup />} />
+        <Route path="/trip/budget" element={<BudgetInput />} />
+        <Route path="/trip/suggestions" element={<Suggestions />} />
+        <Route path="/trip/itinerary" element={<ItineraryBuilder />} />
+        <Route path="/trip/expenses" element={<BudgetTracking />} />
+        <Route path="/trip/buddy" element={<TravelBuddy />} />
         
         {/* Main routes (with layout) */}
         <Route element={<Layout />}>
